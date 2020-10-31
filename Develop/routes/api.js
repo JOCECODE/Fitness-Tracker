@@ -1,57 +1,68 @@
-const router = require("express").Router();
-const Workout = require("../models/Workout");
+const db = require("../models");
 
-router.post("/api/workouts", (req, res) => {
-    Workout.create(body).then(Workouts => {
-        res.json(Workouts);
+module.exports = function (app) {
+    app.get("/api/workouts", (req, res) => {
+        db.Workout.find({}).then(data => {
+            res.json(data); 
+        }).catch(err => {
+            res.status(400).json(err);
+          });
+    });
+
+    // app.put("/api/workouts/:id", )
+//     app.post("/api/workouts", (req, res) => {
+//     db.Workout.create().then(data => {
+//         res.json(data);
+//     }).catch(err => {
+//         res.status(400).json(err);
+//     }); 
+// });
+
+// app.put("/api/workouts", (req, res) => {
+//     db.Workout.find({}).sort({ date: -1 }).then(data => {
+//         res.json(data);
+//     }).catch(err => {
+//         res.status(400).json(err);
+//     });
+// });
+
+// app.put("/api/workouts/:id", (req, res) => {
+//     db.Workout.findOne(
+//     {
+//         _id: mongojs.ObjectId(req.params.id)
+//       },
+//       (error, data) => {
+//         if (error) {
+//           res.send(error);
+//         } else {
+//           res.send(data);
+//         }
+//       });
+// });
+
+app.post("/api/workouts", (req, res) => {
+    db.Workout.create(req.body).then(data => {
+        console.log(data);
+        res.json(data);
     }).catch(err => {
         res.status(400).json(err);
     });
-});
+})
 
-router.put("/api/workouts", (req, res) => {
-    Workout.find({}).sort({ date: -1 }).then(Workouts => {
-        res.json(Workouts);
-    }).catch(err => {
-        res.status(400).json(err);
-    });
-});
-
-router.get("/api/workouts/:id", (req, res) => {
-    Workout.findOne(
-    {
-        _id: mongojs.ObjectId(req.params.id)
-      },
-      (error, data) => {
-        if (error) {
-          res.send(error);
-        } else {
-          res.send(data);
-        }
-      });
-});
-
-router.get("/api/workouts", (req, res) => {
-    Workout.find().then(Workouts => {
-        res.json(Workouts); 
-    }).catch(err => {
-        res.status(400).json(err);
-      });
-});
-
-router.get("/api/workouts/range", (req, res) => {
-Workout.find({}).limit(7).then(Workouts => {
-    console.log(Workouts)
-    res.json(Workouts);
+app.get("/api/workouts/range", (req, res) => {
+db.Workout.find({}).limit(7).then(data => {
+    console.log(data);
+    res.json(data);
 });
     });
 
-router.delete("/api/workouts", ({ body }, res) => {
-    Workout.findByIdAndDelete(body.id).then(() => {
-        res.json(true);
-    }).catch(err => {
+app.put("/api/workouts/:id", (req, res) => {
+    db.Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body }}).then((data) => {
+        console.log(data);
+        res.json(data);
+    })
+    .catch(err => {
         res.status(400).json(err);
     });
 });
-
-module.exports = router;
+};
