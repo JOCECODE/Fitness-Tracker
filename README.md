@@ -23,12 +23,13 @@
 
 ## User-Demo
 
+[![Youtube Link To User Live Demo](http://img.youtube.com/vi/IcbTeQShoJo/0.jpg)](http://www.youtube.com/watch?v=IcbTeQShoJo "Fitness-Tracker-Live-Demo")
+
 Screenshots:
 ![screenshots](<./screenshots/Screenshots(1).png> "Screenshot Of User Demo")
 ![screenshots](<./screenshots/Screenshots(2).png> "Screenshot Of User Demo")
 ![screenshots](<./screenshots/Screenshots(3).png> "Screenshot Of User Demo")
 ![screenshots](<./screenshots/Screenshots(4).png> "Screenshot Of User Demo")
-![screenshots](<./screenshots/Screenshots(5).png> "Screenshot Of User Demo")
 
 ## Description
 
