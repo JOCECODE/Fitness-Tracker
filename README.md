@@ -49,8 +49,6 @@ Must install the following NPM packages:
 
 - to install [express](https://www.npmjs.com/package/express) run the following code in your terminal:
   `npm i express`
-- to install [mongo-seeding](https://www.npmjs.com/package/mongo-seeding) run the following code in your terminal:
-  `npm i mongo-seeding`
 - to install [mongoose](https://www.npmjs.com/package/mongoose) run the following code in your terminal:
   `npm i mongoose`
 - to install [morgan](https://www.npmjs.com/package/morgan) run the following code in your terminal:
